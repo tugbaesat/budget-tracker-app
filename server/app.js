@@ -10,7 +10,13 @@ const PORT = process.env.PORT;
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://budget-tracker-app-server-tugbaesat.vercel.app"],
+    methods: ["POST", "GET", "DELETE"],
+    credentials: true,
+  })
+);
 
 //routes
 readdirSync("./routes").map((route) =>
